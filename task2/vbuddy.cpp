@@ -1092,12 +1092,15 @@ bool vbdFlag() {
 //   tmp[0] = '1';
 //   tmp[1] = '1';
   std::sprintf(msg, "$Y\n");//"$Y\n"); 
+ // char tmp="$Y\n";
+ 
   serial.writeString(msg);
   do {
     n = serial.readStringNoTimeOut(msg, finalChar, 10);
   } while (n<=0);
-  printf("%s\r\n",msg);
-  return((msg[1]=='1'));
+  //printf("%s\r\n",msg);
+  printf("%c\r\n",msg[1]);
+  return((msg[1]!='1'));
 }
 
 void vbdSetMode (int m) {
